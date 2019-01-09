@@ -1,4 +1,4 @@
-# Gobuster v2.0.1 (OJ Reeves @TheColonial)
+# Gobuster v3.0.0 (OJ Reeves @TheColonial)
 
 Gobuster is a tool used to brute-force:
 
@@ -49,7 +49,7 @@ vhost       uses vhost mode
 ## Common Command line options
 
 ```text
--h, --help              help for gobuster
+-h, --help              Help for gobuster
     --noprogress        Don't display progress
 -o, --output string     Output file to write results to (defaults to stdout)
 -q, --quiet             Don't print the banner and other noise
@@ -62,8 +62,8 @@ vhost       uses vhost mode
 
 ```text
 -d, --domain string      The target domain
--h, --help               help for dns
--r, --resolver string    use custom DNS server
+-h, --help               Help for dns
+-r, --resolver string    Use custom DNS server (format server.com or server.com:port)
 -c, --showcname          Show CNAME records (cannot be used with '-i' option)
 -i, --showips            Show IP addresses
     --timeout duration   DNS resolver timeout (default 1s)
@@ -78,7 +78,7 @@ vhost       uses vhost mode
 -e, --expanded             Expanded mode, print full URLs
 -x, --extensions string    File extension(s) to search for
 -r, --followredirect       Follow redirects
--h, --help                 help for dir
+-h, --help                 Help for dir
 -l, --includelength        Include the length of the body in the output
 -k, --insecuressl          Skip SSL certificate verification
 -n, --nostatus             Don't print status codes
@@ -87,7 +87,7 @@ vhost       uses vhost mode
 -s, --statuscodes string   Positive status codes (default "200,204,301,302,307,401,403")
     --timeout duration     HTTP Timeout (default 10s)
 -u, --url string           The target URL
--a, --useragent string     Set the User-Agent string (default "gobuster 2.0.1")
+-a, --useragent string     Set the User-Agent string (default "gobuster/3.0.0")
 -U, --username string      Username for Basic Auth
     --wildcard             Force continued operation when wildcard found
 ```
@@ -167,13 +167,14 @@ Default options looks like this:
 gobuster dir -u https://buffered.io -w ~/wordlists/shortlist.txt
 
 =====================================================
-Gobuster v2.0.1              OJ Reeves (@TheColonial)
+Gobuster v3.0.0              OJ Reeves (@TheColonial)
 =====================================================
 [+] Mode         : dir
 [+] Url/Domain   : https://buffered.io/
 [+] Threads      : 10
 [+] Wordlist     : /home/oj/wordlists/shortlist.txt
 [+] Status codes : 200,204,301,302,307,401,403
+[+] User Agent   : gobuster/3.0.1
 [+] Timeout      : 10s
 =====================================================
 2018/08/27 11:49:43 Starting gobuster
@@ -193,13 +194,14 @@ Default options with status codes disabled looks like this:
 gobuster dir -u https://buffered.io -w ~/wordlists/shortlist.txt -n
 
 =====================================================
-Gobuster v2.0.1              OJ Reeves (@TheColonial)
+Gobuster v3.0.0              OJ Reeves (@TheColonial)
 =====================================================
 [+] Mode         : dir
 [+] Url/Domain   : https://buffered.io/
 [+] Threads      : 10
 [+] Wordlist     : /home/oj/wordlists/shortlist.txt
 [+] Status codes : 200,204,301,302,307,401,403
+[+] User Agent   : gobuster/3.0.1
 [+] No status    : true
 [+] Timeout      : 10s
 =====================================================
@@ -220,13 +222,14 @@ Verbose output looks like this:
 gobuster dir -u https://buffered.io -w ~/wordlists/shortlist.txt -v
 
 =====================================================
-Gobuster v2.0.1              OJ Reeves (@TheColonial)
+Gobuster v3.0.0              OJ Reeves (@TheColonial)
 =====================================================
 [+] Mode         : dir
 [+] Url/Domain   : https://buffered.io/
 [+] Threads      : 10
 [+] Wordlist     : /home/oj/wordlists/shortlist.txt
 [+] Status codes : 200,204,301,302,307,401,403
+[+] User Agent   : gobuster/3.0.1
 [+] Verbose      : true
 [+] Timeout      : 10s
 =====================================================
@@ -249,13 +252,14 @@ Example showing content length:
 gobuster dir -u https://buffered.io -w ~/wordlists/shortlist.txt -l
 
 =====================================================
-Gobuster v2.0.1              OJ Reeves (@TheColonial)
+Gobuster v3.0.0              OJ Reeves (@TheColonial)
 =====================================================
 [+] Mode         : dir
 [+] Url/Domain   : https://buffered.io/
 [+] Threads      : 10
 [+] Wordlist     : /home/oj/wordlists/shortlist.txt
 [+] Status codes : 200,204,301,302,307,401,403
+[+] User Agent   : gobuster/3.0.1
 [+] Show length  : true
 [+] Timeout      : 10s
 =====================================================
@@ -294,7 +298,7 @@ Normal sample run goes like this:
 gobuster dns -d google.com -w ~/wordlists/subdomains.txt
 
 =====================================================
-Gobuster v2.0.1              OJ Reeves (@TheColonial)
+Gobuster v3.0.0              OJ Reeves (@TheColonial)
 =====================================================
 [+] Mode         : dns
 [+] Url/Domain   : google.com
@@ -332,7 +336,7 @@ Show IP sample run goes like this:
 gobuster dns -d google.com -w ~/wordlists/subdomains.txt -i
 
 =====================================================
-Gobuster v2.0.1              OJ Reeves (@TheColonial)
+Gobuster v3.0.0              OJ Reeves (@TheColonial)
 =====================================================
 [+] Mode         : dns
 [+] Url/Domain   : google.com
@@ -370,7 +374,7 @@ Base domain validation warning when the base domain fails to resolve. This is a 
 gobuster dns -d yp.to -w ~/wordlists/subdomains.txt -i
 
 =====================================================
-Gobuster v2.0.1              OJ Reeves (@TheColonial)
+Gobuster v3.0.0              OJ Reeves (@TheColonial)
 =====================================================
 [+] Mode         : dns
 [+] Url/Domain   : yp.to
@@ -392,7 +396,7 @@ Wildcard DNS is also detected properly:
 gobuster dns -d 0.0.1.xip.io -w ~/wordlists/subdomains.txt
 
 =====================================================
-Gobuster v2.0.1              OJ Reeves (@TheColonial)
+Gobuster v3.0.0              OJ Reeves (@TheColonial)
 =====================================================
 [+] Mode         : dns
 [+] Url/Domain   : 0.0.1.xip.io
@@ -414,7 +418,7 @@ If the user wants to force processing of a domain that has wildcard entries, use
 gobuster dns -d 0.0.1.xip.io -w ~/wordlists/subdomains.txt --wildcard
 
 =====================================================
-Gobuster v2.0.1              OJ Reeves (@TheColonial)
+Gobuster v3.0.0              OJ Reeves (@TheColonial)
 =====================================================
 [+] Mode         : dns
 [+] Url/Domain   : 0.0.1.xip.io

@@ -9,9 +9,9 @@ import (
 	"runtime"
 	"time"
 
-	"github.com/OJ/gobuster/cli"
-	"github.com/OJ/gobuster/gobusterdns"
-	"github.com/OJ/gobuster/libgobuster"
+	"github.com/OJ/gobuster/v3/cli"
+	"github.com/OJ/gobuster/v3/gobusterdns"
+	"github.com/OJ/gobuster/v3/libgobuster"
 	"github.com/spf13/cobra"
 )
 
@@ -54,44 +54,39 @@ func parseDNSOptions() (*libgobuster.Options, *gobusterdns.OptionsDNS, error) {
 	}
 	plugin := gobusterdns.NewOptionsDNS()
 
-	domain, err := cmdDNS.Flags().GetString("domain")
+	plugin.Domain, err = cmdDNS.Flags().GetString("domain")
 	if err != nil {
 		return nil, nil, fmt.Errorf("invalid value for domain: %v", err)
 	}
-	plugin.Domain = domain
 
-	showips, err := cmdDNS.Flags().GetBool("showips")
+	plugin.ShowIPs, err = cmdDNS.Flags().GetBool("showips")
 	if err != nil {
 		return nil, nil, fmt.Errorf("invalid value for showips: %v", err)
 	}
-	plugin.ShowIPs = showips
 
-	showcname, err := cmdDNS.Flags().GetBool("showcname")
+	plugin.ShowCNAME, err = cmdDNS.Flags().GetBool("showcname")
 	if err != nil {
 		return nil, nil, fmt.Errorf("invalid value for showcname: %v", err)
 	}
-	plugin.ShowCNAME = showcname
 
-	wildcard, err := cmdDNS.Flags().GetBool("wildcard")
+	plugin.WildcardForced, err = cmdDNS.Flags().GetBool("wildcard")
 	if err != nil {
 		return nil, nil, fmt.Errorf("invalid value for wildcard: %v", err)
 	}
-	plugin.WildcardForced = wildcard
 
-	timeout, err := cmdDNS.Flags().GetDuration("timeout")
+	plugin.Timeout, err = cmdDNS.Flags().GetDuration("timeout")
 	if err != nil {
 		return nil, nil, fmt.Errorf("invalid value for timeout: %v", err)
 	}
-	plugin.Timeout = timeout
 
-	resolver, err := cmdDNS.Flags().GetString("resolver")
+	plugin.Resolver, err = cmdDNS.Flags().GetString("resolver")
 	if err != nil {
 		return nil, nil, fmt.Errorf("invalid value for resolver: %v", err)
 	}
-	if resolver != "" && runtime.GOOS == "windows" {
+
+	if plugin.Resolver != "" && runtime.GOOS == "windows" {
 		return nil, nil, fmt.Errorf("currently can not set custom dns resolver on windows. See https://golang.org/pkg/net/#hdr-Name_Resolution")
 	}
-	plugin.Resolver = resolver
 
 	return globalopts, plugin, nil
 }
@@ -108,7 +103,7 @@ func init() {
 	cmdDNS.Flags().BoolP("showcname", "c", false, "Show CNAME records (cannot be used with '-i' option)")
 	cmdDNS.Flags().DurationP("timeout", "", time.Second, "DNS resolver timeout")
 	cmdDNS.Flags().BoolP("wildcard", "", false, "Force continued operation when wildcard found")
-	cmdDNS.Flags().StringP("resolver", "r", "", "use custom DNS server")
+	cmdDNS.Flags().StringP("resolver", "r", "", "Use custom DNS server (format server.com or server.com:port)")
 	if err := cmdDNS.MarkFlagRequired("domain"); err != nil {
 		log.Fatalf("error on marking flag as required: %v", err)
 	}
