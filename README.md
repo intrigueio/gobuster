@@ -9,6 +9,7 @@ Gobuster is a tool used to brute-force:
 ## Tags, Statuses, etc
 
 [![Build Status](https://travis-ci.com/OJ/gobuster.svg?branch=master)](https://travis-ci.com/OJ/gobuster) [![Backers on Open Collective](https://opencollective.com/gobuster/backers/badge.svg)](#backers) [![Sponsors on Open Collective](https://opencollective.com/gobuster/sponsors/badge.svg)](#sponsors)
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fintrigueio%2Fgobuster.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fintrigueio%2Fgobuster?ref=badge_shield)
 
 ## Oh dear God.. WHY!?
 
@@ -530,6 +531,9 @@ Found: mail.mysite.com
 ## License
 
 See the LICENSE file.
+
+
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fintrigueio%2Fgobuster.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fintrigueio%2Fgobuster?ref=badge_large)
 
 ## Thanks
 
